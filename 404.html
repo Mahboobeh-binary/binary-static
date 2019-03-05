@@ -13,9 +13,7 @@
         'de': 'de|at|li',
         'es': 'ar|bo|cl|co|cr|cu|do|ec|sv|gt|hn|mx|ni|pa|py|pr|es|uy|ve',
         'fr': 'fr|ad|bj|bf|cf|cg|ga|gn|ml|mc|ne|sn|tg',
-        'id': 'id',
         'it': 'it',
-        'ja': 'jp',
         'ko': 'kr',
         'pl': 'po',
         'pt': 'br|mz|ao|pt|gw|pg|cv|st',
@@ -23,8 +21,9 @@
         'th': 'th',
         'vi': 'vn',
         'zh_tw': 'tw|mo',
-        'zh_cn': 'cn|sg',
+        'zh_cn': 'cn',
     };
+    var all_languages = ['en'].concat(Object.keys(langs));
     function getLanguage(country) {
         var conLang = 'en';
         if (country) {
@@ -39,64 +38,82 @@
         return conLang;
     }
 
-    function getRoot() {
-        var hostname = window.location.hostname;
-        var origin = window.location.origin;
-        return /^(.+?).github.io$/.test(hostname) ?
-            origin + '/binary-static' :
-            origin;
-    }
+    var routeHandler = (function routeHandler() {
+        var location = window.location;
 
-    const all_languages = ['en'].concat(Object.keys(langs));
-    function redirect() {
-        var alternative_pages = ['home', 'why-us', 'tour', 'terms-and-conditions', 'signup', 'get-started'];
-        var redirect_to;
-        var alt_regex = new RegExp('(' + alternative_pages.map(function(page) { return page + '.html|' + page + '-jp.html' }).join('|') + ')', 'i');
-        if (alt_regex.test(href)) {
-            href = href.replace(alt_regex, function(match) {
-                if (/-jp/.test(match) && !/ja/i.test(lang)) {
-                    redirect_to = match.replace(/-jp/i, '');
-                } else if (!/-jp/.test(match) && /ja/i.test(lang)) {
-                    redirect_to = match.replace(/\.html/i, '-jp.html');
+        return {
+            isApp2: function() {
+                return location.href.includes('/app/');
+            },
+            redirectToReactRoute: function(lang) {
+                // Converts the path and query strings into just query strings and
+                // then redirects the browser to the new url with query strings and hash fragment.
+                // https://www.binary.com/app/en/statement -> https://www.binary.com/app/en?p=/statement
+
+                var pathname = location.pathname.toLowerCase().replace(/\/index(\.html)?/, '');
+                var base = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '');
+                var path_name_split = pathname.split('/');
+                var app_url_segment_idx = path_name_split.findIndex(function(path_segment) { return path_segment.toLowerCase() === 'app' });
+
+                location.replace(
+                    base +                                                                            // https://www.binary.com/
+                    path_name_split.slice(0, app_url_segment_idx + 1).join('/') + '/'                 // /app/
+                    + lang.toLowerCase() + '?from_404=true&p=' +                                                    // en?p=
+                    path_name_split.slice(app_url_segment_idx + 2).join('/').replace(/&/g, '~and~') + // statement
+                    (location.search ?
+                        '&q=' + location.search.slice(1).replace(/&/g, '~and~') : '')
+                    + location.hash
+                );
+            },
+            redirect: function(lang) {
+                var redirect_href = getRoot() + '/' + lang.toLowerCase() + '/' + '404';
+                window.location = redirect_href;
+
+                function getRoot() {
+                    return /^(.+?).github.io$/.test(location.hostname) ?
+                        location.origin + '/binary-static' :
+                        location.origin;
                 }
-                return redirect_to || match;
-            });
+            }
         }
+    })();
 
-        // if language is wrong, we need to rebuild the url
-        var lang_regex = new RegExp('/(' + all_languages.join('|') + ')/', 'i');
-        if (!lang_regex.test(href)) {
-            redirect_to = redirect_to || '404';
-            href = getRoot() + '/' + lang.toLowerCase() + '/' + redirect_to.replace(/\.html/i, '') + '.html';
-        }
-
-        // if not alternate page, redirect to 404 page
-        if (!redirect_to) {
-            href = href.replace(new RegExp('(/' + lang + '/).*', 'i'), '$1404.html');
-        }
-
-        window.location = href;
-    }
-
-    var href = window.location.href;
-    var lang = href.split('/').slice(3).find(function(language) { return all_languages.indexOf(language.toLowerCase()) > -1 }) || getCookieItem('language');
-    if (lang && all_languages.indexOf(lang.toLowerCase()) > -1) {
-        redirect();
-    } else {
+    function openWSAndGetLanguage(cb) {
         var ws = new WebSocket('wss://ws.binaryws.com/websockets/v3?app_id=1');
+
         ws.onopen = function(e) {
-            ws.send(JSON.stringify({'website_status': '1'}));
+            ws.send(JSON.stringify({ website_status: 1 }));
         };
+
         ws.onmessage = function(msg) {
             var response = JSON.parse(msg.data);
-            if(response.msg_type === 'website_status') {
-                if(!response.error && response.hasOwnProperty('website_status')) {
+            if (response.msg_type === 'website_status') {
+                var lang;
+                if (!response.error && response.hasOwnProperty('website_status')) {
                     lang = getLanguage(response.website_status.clients_country);
                 }
                 ws.close();
-                redirect();
+                return cb(lang);
             }
         };
+    }
+
+    var all_lang_regex = new RegExp('(' + all_languages.join('|') + ')', 'i');
+    var is_from_404 = location.search &&
+        location.search.toLowerCase().indexOf('from_404')  !== -1;
+    var redirectFn = routeHandler.isApp2() && !is_from_404 ? routeHandler.redirectToReactRoute : routeHandler.redirect;
+
+    var lang = location.href
+        .split('/')
+        .find(function(url_segment) { return all_lang_regex.test((url_segment.toLowerCase())) })
+        || getCookieItem('language');
+
+    if (lang && all_languages.indexOf(lang.toLowerCase()) > -1) {
+        redirectFn(lang);
+    } else {
+        openWSAndGetLanguage(function(lang) {
+            if (lang) redirectFn(lang);
+        });
     }
     </script>
 </head>
