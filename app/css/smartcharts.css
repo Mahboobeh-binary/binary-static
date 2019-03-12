@@ -2996,7 +2996,8 @@ html, body {
     bottom: 0px !important;
     top: 0px !important;
     -webkit-animation: none;
-            animation: none; }
+            animation: none;
+    z-index: 10; }
 .smartcharts-light .cq-spot.cq-endpoint {
       border-left: 2px dashed #ff9933; }
 .smartcharts-dark .cq-spot.cq-endpoint {
@@ -3813,65 +3814,6 @@ html, body {
   position: absolute;
   display: inline-block;
   text-align: center; }
-
-/* ------------------------ *\
-		Variables
-\* ------------------------ */
-/* --------- COLOR :: Border --------- */
-/* ------------------------ *\
-        Mixin
-\* ------------------------ */
-/* --------- Animation : dialog --------- */
-/* --------- CSS Properties --------- */
-/* stylelint-disable color-no-hex */
-/* stylelint-disable value-keyword-case */
-@-webkit-keyframes move-background {
-  from {
-    -webkit-transform: translateX(0); }
-  to {
-    -webkit-transform: translateX(46px); } }
-@keyframes move-background {
-  from {
-    -webkit-transform: translateX(0);
-            transform: translateX(0); }
-  to {
-    -webkit-transform: translateX(46px);
-            transform: translateX(46px); } }
-.pagination {
-  top: 0;
-  bottom: 0 !important; }
-.pagination__loader {
-    color: #000000;
-    position: relative;
-    height: 100%;
-    text-align: center;
-    overflow: hidden;
-    /**
-         * TODO
-         * The current impelementaion of MarkerStore just set the left attribute to the marker's style,
-         * the line below should be removed whenever the MarkerSotre is able to set right attribute to the marker.
-         **/
-    margin-left: -10000px;
-    opacity: 0.7; }
-.pagination__loader-background {
-      position: absolute;
-      left: -46px;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      z-index: -1;
-      /* stylelint-disable */
-      background: -webkit-repeating-linear-gradient(145deg, rgba(153, 156, 172, 0.32) 1px, #999cac 2px, #999cac 11px, rgba(153, 156, 172, 0.32) 12px, rgba(153, 156, 172, 0.32) 20px);
-      background: repeating-linear-gradient(-55deg, rgba(153, 156, 172, 0.32) 1px, #999cac 2px, #999cac 11px, rgba(153, 156, 172, 0.32) 12px, rgba(153, 156, 172, 0.32) 20px);
-      /* stylelint-enable */
-      -webkit-animation-name: move-background;
-      -webkit-animation-duration: 0.6s;
-      -webkit-animation-timing-function: linear;
-      -webkit-animation-iteration-count: infinite;
-      animation-name: move-background;
-      animation-duration: 0.6s;
-      animation-timing-function: linear;
-      animation-iteration-count: infinite; }
 
 
 /*# sourceMappingURL=smartcharts.css.map*/
