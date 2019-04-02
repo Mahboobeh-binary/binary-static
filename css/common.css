@@ -1061,8 +1061,6 @@ label + input {
     color: #a8a8a8;
     text-align: justify;
     margin: 0 0 10px; }
-  #footer #footer-regulatory .age-restriction {
-    width: 45px; }
   #footer #footer-regulatory .fld-risk-warning {
     border-color: #44484c; }
     #footer #footer-regulatory .fld-risk-warning legend {
@@ -1088,13 +1086,13 @@ label + input {
 #footer .iom-icon {
   width: 90px; }
 
-#footer .mga-icon {
+#footer .lga-icon {
   width: 100px; }
 
 #footer .gamstop-icon {
   width: 109px; }
 
-#footer .gamstop-icon.data-show-visible + .mga-icon {
+#footer .gamstop-icon.data-show-visible + .lga-icon {
   width: 70px;
   margin-bottom: 3px;
   margin-left: -10px; }
@@ -1111,7 +1109,7 @@ label + input {
       -ms-flex-align: center;
           align-items: center; }
 
-#footer .mga-gamstop-icon-container {
+#footer .lga-gamstop-icon-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1228,8 +1226,7 @@ label + input {
   #footer .regulation-logos .bvi-icon {
     width: 60px; }
   #footer .regulation-logos .labuan-icon {
-    width: 105px; }
-  #footer .age-restriction {
+    width: 105px;
     margin-right: 0; } }
 
 body #topbar {
