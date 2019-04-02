@@ -935,6 +935,7 @@ var GTM = function () {
 
     var getCommonVariables = function getCommonVariables() {
         return _extends({
+            country_ip: State.getResponse('website_status.clients_country'),
             language: getLanguage(),
             pageTitle: pageTitle(),
             pjax: State.get('is_loaded_by_pjax'),
@@ -9386,6 +9387,15 @@ var isEqualObject = function isEqualObject(obj1, obj2) {
     });
 };
 
+// Filters out duplicates in an array of objects by key
+var unique = function unique(array, key) {
+    return array.filter(function (e, idx) {
+        return array.findIndex(function (a, i) {
+            return a[key] ? a[key] === e[key] : i === idx;
+        }) === idx;
+    });
+};
+
 var getPropertyValue = function getPropertyValue(obj, k) {
     var keys = k;
     if (!Array.isArray(keys)) keys = [keys];
@@ -9517,6 +9527,7 @@ module.exports = {
     isEmptyObject: isEmptyObject,
     cloneObject: cloneObject,
     isDeepEqual: isDeepEqual,
+    unique: unique,
     getPropertyValue: getPropertyValue,
     handleHash: handleHash,
     clearable: clearable,
@@ -9834,6 +9845,7 @@ var pages_config = {
     api_tokenws: { module: APIToken, is_authenticated: true },
     assessmentws: { module: FinancialAssessment, is_authenticated: true, only_real: true },
     asset_indexws: { module: AssetIndexUI },
+    asuncion: { module: StaticPages.Locations },
     authenticate: { module: Authenticate, is_authenticated: true, only_real: true },
     authorised_appsws: { module: AuthorisedApps, is_authenticated: true },
     careers: { module: StaticPages.Careers },
@@ -9975,6 +9987,11 @@ var BinaryPjax = function () {
         }, '', getElementById('all-accounts'));
         document.addEventListener('click', handleClick);
         window.addEventListener('popstate', handlePopstate);
+
+        // IE11 PopState
+        if (!!window.MSInputMethodContext && !!document.documentMode) {
+            window.onhashchange = handlePopstate;
+        }
     };
 
     var setDataPage = function setDataPage(content, url) {
@@ -10090,11 +10107,24 @@ var BinaryPjax = function () {
         return false;
     };
 
+    var createEventWithPolyfill = function createEventWithPolyfill(event_name) {
+        var event = void 0;
+        if (typeof Event === 'function') {
+            event = new Event(event_name);
+        } else {
+            // IE11
+            event = document.createEvent('HTMLEvents');
+            event.initEvent(event_name, true, true);
+        }
+
+        return event;
+    };
+
     var replaceContent = function replaceContent(url, content, replace) {
         previous_url = window.location.href;
         window.history[replace ? 'replaceState' : 'pushState']({ url: url }, content.title, url);
 
-        params.container.dispatchEvent(new Event('binarypjax:before'));
+        params.container.dispatchEvent(createEventWithPolyfill('binarypjax:before'));
 
         document.title = content.title;
         var content_selector = params.container.querySelector(params.content_selector);
@@ -10814,7 +10844,7 @@ var Header = function () {
 
             var hasMissingRequiredField = function hasMissingRequiredField() {
                 // eslint-disable-next-line no-nested-ternary
-                var required_fields = is_costarica ? [].concat(_toConsumableArray(necessary_signup_fields), _toConsumableArray(necessary_withdrawal_fields)) : Client.isAccountOfType('financial') ? ['account_opening_reason', 'address_line_1', 'address_city', 'phone', 'tax_identification_number', 'tax_residence'].concat(_toConsumableArray(Client.get('residence') === 'gb' ? ['address_postcode'] : [])) : [];
+                var required_fields = is_costarica ? [].concat(_toConsumableArray(necessary_signup_fields), _toConsumableArray(necessary_withdrawal_fields)) : Client.isAccountOfType('financial') ? ['account_opening_reason', 'address_line_1', 'address_city', 'phone', 'tax_identification_number', 'tax_residence'].concat(_toConsumableArray(Client.get('residence') === 'gb' || Client.get('landing_company_shortcode') === 'iom' ? ['address_postcode'] : [])) : [];
 
                 var get_settings = State.getResponse('get_settings');
                 return required_fields.some(function (field) {
@@ -12009,7 +12039,7 @@ var AccountOpening = function () {
     };
 
     var commonValidations = function commonValidations() {
-        var req = [{ selector: '#salutation', validations: ['req'] }, { selector: '#first_name', validations: ['req', 'letter_symbol', ['length', { min: 2, max: 30 }]] }, { selector: '#last_name', validations: ['req', 'letter_symbol', ['length', { min: 2, max: 30 }]] }, { selector: '#date_of_birth', validations: ['req'] }, { selector: '#address_line_1', validations: ['req', 'address', ['length', { min: 1, max: 70 }]] }, { selector: '#address_line_2', validations: ['address', ['length', { min: 0, max: 70 }]] }, { selector: '#address_city', validations: ['req', 'letter_symbol', ['length', { min: 1, max: 35 }]] }, { selector: '#address_state', validations: $('#address_state').prop('nodeName') === 'SELECT' ? '' : ['letter_symbol', ['length', { min: 0, max: 35 }]] }, { selector: '#address_postcode', validations: [Client.get('residence') === 'gb' ? 'req' : '', 'postcode', ['length', { min: 0, max: 20 }]] }, { selector: '#phone', validations: ['req', 'phone', ['length', { min: 8, max: 35, value: function value() {
+        var req = [{ selector: '#salutation', validations: ['req'] }, { selector: '#first_name', validations: ['req', 'letter_symbol', ['length', { min: 2, max: 30 }]] }, { selector: '#last_name', validations: ['req', 'letter_symbol', ['length', { min: 2, max: 30 }]] }, { selector: '#date_of_birth', validations: ['req'] }, { selector: '#address_line_1', validations: ['req', 'address', ['length', { min: 1, max: 70 }]] }, { selector: '#address_line_2', validations: ['address', ['length', { min: 0, max: 70 }]] }, { selector: '#address_city', validations: ['req', 'letter_symbol', ['length', { min: 1, max: 35 }]] }, { selector: '#address_state', validations: $('#address_state').prop('nodeName') === 'SELECT' ? '' : ['letter_symbol', ['length', { min: 0, max: 35 }]] }, { selector: '#address_postcode', validations: [Client.get('residence') === 'gb' || State.getResponse('authorize.upgradeable_landing_companies').indexOf('iom') > -1 ? 'req' : '', 'postcode', ['length', { min: 0, max: 20 }]] }, { selector: '#phone', validations: ['req', 'phone', ['length', { min: 8, max: 35, value: function value() {
                     return $('#phone').val().replace(/\D/g, '');
                 } }]] }, { selector: '#secret_question', validations: ['req'] }, { selector: '#secret_answer', validations: ['req', 'general', ['length', { min: 4, max: 50 }]] }, { selector: '#tnc', validations: [['req', { message: localize('Please accept the terms and conditions.') }]], exclude_request: 1 }, { selector: '#tax_residence', validations: ['req', ['length', { min: 1, max: 20 }]] }, { selector: '#tax_identification_number', validations: ['req'] }, { request_field: 'residence', value: Client.get('residence') }, { request_field: 'client_type', value: function value() {
                 return $('#chk_professional').is(':checked') ? 'professional' : 'retail';
@@ -27152,6 +27182,11 @@ var Authenticate = function () {
                         link = Url.urlForCurrentDomain('https://marketing.binary.com/authentication/MF_Authentication_Process.pdf');
                     }
                     $not_authenticated.find('.learn_more').setVisibility(1).find('a').attr('href', link);
+
+                    if (isIdentificationNoExpiry(Client.get('residence'))) {
+                        $('#expiry_datepicker_proofid').setVisibility(0);
+                        $('#exp_date_2').datepicker('setDate', '2099-12-31');
+                    }
                 } else if (!/age_verification/.test(status)) {
                     $('#needs_age_verification').setVisibility(1);
                 } else {
@@ -27181,6 +27216,15 @@ var Authenticate = function () {
         });
 
         $('.file-picker').on('change', onFileSelected);
+    };
+
+    /**
+     * Checks for countries of residence with no ID expiry date.
+     * @param {string} residence
+    */
+    var isIdentificationNoExpiry = function isIdentificationNoExpiry(residence) {
+        return (/(ng|za|lk|in|sg|id|mm|vn|br|mx|co)/.test(residence)
+        );
     };
 
     /**
@@ -27503,7 +27547,7 @@ var Authenticate = function () {
             onErrorResolved('id_number', file.passthrough.class);
             return localize('Only letters, numbers, space, underscore, and hyphen are allowed for ID number ([_1]).', doc_name[file.documentType]);
         }
-        if (!file.expirationDate && required_docs.indexOf(file.documentType.toLowerCase()) !== -1) {
+        if (!file.expirationDate && required_docs.indexOf(file.documentType.toLowerCase()) !== -1 && !(isIdentificationNoExpiry(Client.get('residence')) && file.documentType === 'proofid')) {
             onErrorResolved('exp_date', file.passthrough.class);
             return localize('Expiry date is required for [_1].', doc_name[file.documentType]);
         }
@@ -29892,7 +29936,7 @@ var PersonalDetails = function () {
             var is_for_mt_tax = /real/.test(mt_acct_type) && mt_acct_type.split('_').length > 2; // demo and volatility mt accounts do not require tax info
             var is_tax_req = is_financial || is_for_mt_tax && +State.getResponse('landing_company.config.tax_details_required') === 1;
 
-            validations = [{ selector: '#address_line_1', validations: ['req', 'address'] }, { selector: '#address_line_2', validations: ['address'] }, { selector: '#address_city', validations: ['req', 'letter_symbol'] }, { selector: '#address_state', validations: $('#address_state').prop('nodeName') === 'SELECT' ? '' : ['letter_symbol'] }, { selector: '#address_postcode', validations: [Client.get('residence') === 'gb' ? 'req' : '', 'postcode', ['length', { min: 0, max: 20 }]] }, { selector: '#email_consent' }, { selector: '#phone', validations: ['req', 'phone', ['length', { min: 8, max: 35, value: function value() {
+            validations = [{ selector: '#address_line_1', validations: ['req', 'address'] }, { selector: '#address_line_2', validations: ['address'] }, { selector: '#address_city', validations: ['req', 'letter_symbol'] }, { selector: '#address_state', validations: $('#address_state').prop('nodeName') === 'SELECT' ? '' : ['letter_symbol'] }, { selector: '#address_postcode', validations: [Client.get('residence') === 'gb' || Client.get('landing_company_shortcode') === 'iom' ? 'req' : '', 'postcode', ['length', { min: 0, max: 20 }]] }, { selector: '#email_consent' }, { selector: '#phone', validations: ['req', 'phone', ['length', { min: 8, max: 35, value: function value() {
                         return $('#phone').val().replace(/\D/g, '');
                     } }]] }, { selector: '#place_of_birth', validations: ['req'] }, { selector: '#account_opening_reason', validations: ['req'] }, { selector: '#date_of_birth', validations: ['req'] }, { selector: '#tax_residence', validations: is_tax_req ? ['req'] : '' }, { selector: '#citizen', validations: is_financial || is_gaming || is_for_mt_citizen ? ['req'] : '' }, { selector: '#chk_tax_id', validations: is_financial ? [['req', { hide_asterisk: true, message: localize('Please confirm that all the information above is true and complete.') }]] : '', exclude_request: 1 }];
 
@@ -34358,6 +34402,10 @@ var SetCurrency = function () {
                                         redirect_url = Url.urlFor('user/authenticate');
                                     }
                                 }
+                                // Do not redirect MLT clients to cashier, because they need to set self exclusion before trading
+                                if (!redirect_url && /^(malta)$/i.test(Client.get('landing_company_shortcode'))) {
+                                    redirect_url = Url.urlFor('user/security/self_exclusionws');
+                                }
                                 // Do not redirect MX clients to cashier, because they need to set max limit before making deposit
                                 if (!redirect_url && !/^(iom)$/i.test(Client.get('landing_company_shortcode'))) {
                                     redirect_url = Url.urlFor('cashier');
@@ -36612,7 +36660,12 @@ var TermsAndConditions = function () {
             // 20 is the padding for content from bottom, to avoid menu snapping back up
             $sidebar.css({ position: 'absolute', bottom: '20px', top: '', width: sidebar_width });
         } else {
-            $sidebar.css({ position: 'fixed', top: '0px', bottom: '', width: sidebar_width });
+            var position_style = 'fixed';
+            if (!!window.MSInputMethodContext && !!document.documentMode) {
+                // fix styling for IE11
+                position_style = 'static';
+            }
+            $sidebar.css({ position: position_style, top: '0px', bottom: '', width: sidebar_width });
         }
     };
 
