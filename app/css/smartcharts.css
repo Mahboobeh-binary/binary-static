@@ -10,6 +10,7 @@
 /* --------- CSS Properties --------- */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 /* ------------------------ *\
 		Variables
 \* ------------------------ */
@@ -145,6 +146,7 @@
 /* --------- CSS Properties --------- */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 .ciq-chart-types .cq-menu-dropdown {
   width: 260px;
   box-sizing: border-box; }
@@ -156,7 +158,7 @@
     padding: 0;
     justify-content: space-between; }
 .smartcharts-light .ciq-chart-types .ciq-list .ciq-list-item.active {
-      border-right: 2px solid #fafafb; }
+      border-right: 2px solid #999cac; }
 .smartcharts-dark .ciq-chart-types .ciq-list .ciq-list-item.active {
       border-right: 2px solid #ffffff; }
 .ciq-chart-types .ciq-list .ciq-list-item > .left {
@@ -180,6 +182,7 @@
 /* --------- CSS Properties --------- */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 .cq-dialog {
   width: 344px;
   left: calc(50% - 344px / 2);
@@ -195,7 +198,7 @@
   transition: pointer-events 0.2s cubic-bezier(0.64, 0.04, 0.35, 1), transform 0.25s cubic-bezier(0.64, 0.04, 0.35, 1), opacity 0.17s cubic-bezier(0.64, 0.04, 0.35, 1), z-index 0.17s cubic-bezier(0.64, 0.04, 0.35, 1);
   transition: pointer-events 0.2s cubic-bezier(0.64, 0.04, 0.35, 1), transform 0.25s cubic-bezier(0.64, 0.04, 0.35, 1), opacity 0.17s cubic-bezier(0.64, 0.04, 0.35, 1), z-index 0.17s cubic-bezier(0.64, 0.04, 0.35, 1), -webkit-transform 0.25s cubic-bezier(0.64, 0.04, 0.35, 1); }
 .smartcharts-light .cq-dialog {
-    background: #fafafb; }
+    background: #999cac; }
 .smartcharts-dark .cq-dialog {
     background: #191c31; }
 .cq-dialog.open {
@@ -214,7 +217,7 @@
     padding: 0 15px; }
 .smartcharts-light .smartcharts-mobile .cq-dialog .cq-titlebar {
       color: #7f8397;
-      border-bottom: 2px solid #fafafb; }
+      border-bottom: 2px solid #ffffff; }
 .smartcharts-dark .smartcharts-mobile .cq-dialog .cq-titlebar {
       color: #ffffff;
       border-bottom: 2px solid #191c31; }
@@ -236,6 +239,7 @@
 /* --------- CSS Properties --------- */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 .ciq-views .cq-menu-dropdown {
   width: 260px;
   height: 196px; }
@@ -246,7 +250,7 @@
     padding: 0 4px 0 16px;
     box-sizing: border-box; }
 .smartcharts-light .ciq-views .cq-menu-dropdown .template-name {
-      border: 1px solid #fafafb;
+      border: 1px solid rgba(153, 156, 172, 0.32);
       background: #ffffff; }
 .smartcharts-dark .ciq-views .cq-menu-dropdown .template-name {
       border: 1px solid #191c31;
@@ -318,7 +322,7 @@
   height: 100%;
   z-index: 40; }
 .smartcharts-light .ciq-views .ovrwrit-alrt {
-    background-color: #fafafb; }
+    background-color: #ffffff; }
 .smartcharts-dark .ciq-views .ovrwrit-alrt {
     background-color: #191c31; }
 .ciq-views .ovrwrit-alrt .ovrwrit-alrt-title {
@@ -366,6 +370,7 @@
 /* --------- CSS Properties --------- */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 /* stylelint-disable plugin/no-unsupported-browser-features */
 .cq-slider {
   width: 150px;
@@ -501,7 +506,7 @@
     box-sizing: border-box; }
 .smartcharts-light .cq-dropdown .title {
       color: #7f8397 !important;
-      border: 1px solid #fafafb; }
+      border: 1px solid #999cac; }
 .smartcharts-dark .cq-dropdown .title {
       color: #ffffff !important;
       border: 1px solid #202641; }
@@ -532,7 +537,7 @@
     border-radius: 4px; }
 .smartcharts-light .cq-dropdown .dropdown {
       background: #ffffff;
-      border: 1px solid #fafafb; }
+      border: 1px solid #999cac; }
 .smartcharts-dark .cq-dropdown .dropdown {
       background: #2a3052;
       border: 1px solid #202641; }
@@ -547,7 +552,7 @@
 .cq-dropdown .dropdown .row:hover {
         font-weight: bold; }
 .smartcharts-light .cq-dropdown .dropdown .row:hover {
-          background: #fafafb;
+          background: #999cac;
           color: #2a3052; }
 .smartcharts-dark .cq-dropdown .dropdown .row:hover {
           background: #555975;
@@ -648,9 +653,9 @@
 .cq-switch.on .handle {
     left: 17px; }
 .smartcharts-light .cq-switch.on {
-    background: #4bbfab; }
+    background: #39b19d; }
 .smartcharts-dark .cq-switch.on {
-    background: #4bbfab; }
+    background: #39b19d; }
 .cq-switch.off .handle {
     left: 1px; }
 .smartcharts-light .cq-switch.off {
@@ -693,6 +698,7 @@
 /* --------- CSS Properties --------- */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 .ciq-period {
   padding: 0;
   line-height: 1.5em !important; }
@@ -764,7 +770,7 @@
           font-weight: 500; }
 .smartcharts-light .ciq-period .cq-menu-dropdown .timeUnit span.selected {
             color: #2a3052;
-            background: #fafafb;
+            background: #999cac;
             border-right: 2px solid #2a3052; }
 .smartcharts-dark .ciq-period .cq-menu-dropdown .timeUnit span.selected {
             color: #ffffff;
@@ -840,6 +846,7 @@
 /* --------- CSS Properties --------- */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 .cq-chart-size {
   display: flex !important;
   height: auto;
@@ -888,6 +895,7 @@
 /* --------- CSS Properties --------- */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 .ciq-draw-tools .cq-menu-dropdown {
   width: 200px;
   box-sizing: border-box;
@@ -905,13 +913,13 @@
       margin: 0 0 8px;
       border-radius: 3px; }
 .smartcharts-light .ciq-draw-tools .cq-menu-dropdown .body .cq-draw-button {
-        border: solid #fafafb 1px; }
+        border: solid #999cac 1px; }
 .smartcharts-dark .ciq-draw-tools .cq-menu-dropdown .body .cq-draw-button {
         border: solid #202641 1px; }
 .ciq-draw-tools .cq-menu-dropdown .body .ciq-list {
       padding-right: 9px; }
 .smartcharts-light .ciq-draw-tools .cq-menu-dropdown .body .ciq-list .cq-draw-buttons + .ciq-list-item {
-        border-top: 1px solid #fafafb; }
+        border-top: 1px solid #999cac; }
 .smartcharts-dark .ciq-draw-tools .cq-menu-dropdown .body .ciq-list .cq-draw-buttons + .ciq-list-item {
         border-top: 1px solid #202641; }
 
@@ -926,6 +934,7 @@
 /* --------- CSS Properties --------- */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 .cq-chart-setting .cq-menu-dropdown .cq-menu-container {
   height: 0px; }
 .cq-chart-setting .cq-menu-dropdown .cq-menu-container.active {
@@ -979,7 +988,7 @@
 .cq-chart-setting .body .ciq-list-language .ciq-list-item:nth-child(2n) {
         border-left: none; }
 .smartcharts-light .cq-chart-setting .body .ciq-list-language .ciq-list-item:nth-child(2) {
-        border-top: 1px solid #fafafb; }
+        border-top: 1px solid rgba(153, 156, 172, 0.32); }
 .smartcharts-dark .cq-chart-setting .body .ciq-list-language .ciq-list-item:nth-child(2) {
         border-top: 1px solid #191c31; }
 .cq-chart-setting .body .ciq-list-language .ciq-list-item .ic-icon {
@@ -1048,6 +1057,7 @@
 /* --------- CSS Properties --------- */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 .cq-download .cq-menu-dropdown {
   width: 280px; }
 .cq-download .body {
@@ -1079,6 +1089,7 @@
 /* --------- CSS Properties --------- */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 .ciq-list {
   position: relative; }
 .ciq-list.ps {
@@ -1101,9 +1112,9 @@
 .smartcharts-light .ciq-list .ciq-list-item {
       color: #7f8397;
       background: #ffffff;
-      border-left: 1px solid #fafafb;
-      border-right: 1px solid #fafafb;
-      border-bottom: 1px solid #fafafb; }
+      border-left: 1px solid rgba(153, 156, 172, 0.32);
+      border-right: 1px solid rgba(153, 156, 172, 0.32);
+      border-bottom: 1px solid rgba(153, 156, 172, 0.32); }
 .smartcharts-dark .ciq-list .ciq-list-item {
       color: #7f8397;
       background: #101320;
@@ -1111,7 +1122,7 @@
       border-right: 1px solid #191c31;
       border-bottom: 1px solid #191c31; }
 .smartcharts-light .ciq-list .ciq-list-item:first-child {
-      border-top: 1px solid #fafafb; }
+      border-top: 1px solid rgba(153, 156, 172, 0.32); }
 .smartcharts-dark .ciq-list .ciq-list-item:first-child {
       border-top: 1px solid #191c31; }
 .ciq-list .ciq-list-item.active {
@@ -1139,6 +1150,7 @@
 /* --------- CSS Properties --------- */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 .cq-dialog-overlay {
   display: flex;
   align-items: center;
@@ -1233,7 +1245,7 @@
     justify-content: flex-end;
     margin-bottom: 5px; }
 .smartcharts-light .cq-settings-dialog .buttons {
-      background: #fafafb; }
+      background: #999cac; }
 .smartcharts-dark .cq-settings-dialog .buttons {
       background: #191c31; }
 .cq-settings-dialog .buttons > div {
@@ -1295,6 +1307,7 @@
 /* --------- CSS Properties --------- */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 .cq-categorical-display {
   width: 512px;
   padding: 0 !important;
@@ -1306,7 +1319,7 @@
 .smartcharts-light .cq-categorical-display {
     color: rgba(0, 0, 0, 0.8);
     background: #f4f4f6;
-    box-shadow: 0 2px 8px 0 #fafafb; }
+    box-shadow: 0 2px 8px 0 #999cac; }
 .smartcharts-dark .cq-categorical-display {
     color: #7f8397;
     background: #191c31;
@@ -1691,8 +1704,10 @@
 /* --------- CSS Properties --------- */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 
 /* ------------------------ *\
 		Variables
@@ -1705,6 +1720,7 @@
 /* --------- CSS Properties --------- */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 /* Comparisons */
 .cq-comparison {
   position: relative;
@@ -1782,6 +1798,7 @@
 /* --------- CSS Properties --------- */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 .cq-chart-title {
   display: inline-block;
   top: 1em;
@@ -1932,6 +1949,7 @@
 /* --------- CSS Properties --------- */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 .ciq-asset-information {
   position: relative;
   z-index: +1;
@@ -1982,6 +2000,7 @@
 /* --------- CSS Properties --------- */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 .cq-bottom-ui-widgets {
   position: absolute;
   width: 100%; }
@@ -1997,6 +2016,7 @@
 /* --------- CSS Properties --------- */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 .drawing-mouse-pointer {
   display: none;
   position: absolute;
@@ -2015,6 +2035,7 @@
 /* --------- CSS Properties --------- */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 .ciq-chart-dialog {
   width: var(--table-width);
   left: auto; }
@@ -2058,7 +2079,7 @@
   position: fixed;
   display: block; }
 .smartcharts-light .ciq-table-head {
-    background: #fafafb;
+    background: #ffffff;
     color: #7f8397; }
 .smartcharts-dark .ciq-table-head {
     background: #191c31;
@@ -2066,7 +2087,7 @@
 .ciq-table-head .ciq-table-cell {
     line-height: 40px; }
 .smartcharts-light .ciq-table-row {
-  border-bottom: 1px solid #fafafb; }
+  border-bottom: 1px solid #ffffff; }
 .smartcharts-dark .ciq-table-row {
   border-bottom: 1px solid #191c31; }
 .ciq-table-row .ciq-table-cell {
@@ -2079,9 +2100,9 @@
 .ciq-table-row .ciq-table-cell .cq-change:after {
     margin: 3px 0 0 5px; }
 .smartcharts-light .ciq-table-row .ciq-table-cell .up {
-    color: #4bbfab; }
+    color: #39b19d; }
 .smartcharts-dark .ciq-table-row .ciq-table-cell .up {
-    color: #4bbfab; }
+    color: #39b19d; }
 .smartcharts-light .ciq-table-row .ciq-table-cell .down {
     color: #e31c4b; }
 .smartcharts-dark .ciq-table-row .ciq-table-cell .down {
@@ -2121,6 +2142,7 @@
 /* --------- CSS Properties --------- */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 .cq-last-digits {
   position: absolute;
   bottom: 45px;
@@ -2139,9 +2161,9 @@
 .smartcharts-dark .cq-last-digits .cq-bars .min {
       color: #e31c4b; }
 .smartcharts-light .cq-last-digits .cq-bars .max {
-      color: #34a39a; }
+      color: #2d9f93; }
 .smartcharts-dark .cq-last-digits .cq-bars .max {
-      color: #4bbfab; }
+      color: #39b19d; }
 .cq-last-digits .cq-bars .cq-bar-value {
       margin: -16px 0 0 -5px;
       transition: opacity 0.8s linear;
@@ -2170,9 +2192,9 @@
 .smartcharts-dark .cq-last-digits .cq-bars .cq-bar.min {
         background-color: #e31c4b; }
 .smartcharts-light .cq-last-digits .cq-bars .cq-bar.max {
-        background-color: #34a39a; }
+        background-color: #2d9f93; }
 .smartcharts-dark .cq-last-digits .cq-bars .cq-bar.max {
-        background-color: #4bbfab; }
+        background-color: #39b19d; }
 .cq-last-digits .cq-bar-footer {
     text-align: center;
     width: 325px; }
@@ -2194,6 +2216,7 @@
 /* --------- CSS Properties --------- */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 /*
  Edit (and rename) this file to implement your own style. Please avoid editing the imported _ciq...scss files
  other than _ciq_general.scss so that you can receive upgrades without having to reimplement your changes.
@@ -2333,7 +2356,7 @@ html, body {
   border-left: 6px solid transparent;
   border-right: 6px solid transparent; }
 .cq-change.up:after {
-  border-bottom: 8px solid #4bbfab; }
+  border-bottom: 8px solid #39b19d; }
 .cq-change.down:after {
   border-top: 8px solid #e31c4b; }
 .cq-change .cq-todays-change-percent {
@@ -2417,7 +2440,7 @@ html, body {
     border: 1px solid #999cac; }
 .smartcharts-dark .stx-panel-control {
     background: #101320;
-    border: 1px solid #555975; }
+    border: 1px solid #ffffff; }
 .stx-panel-control .stx-btn-panel {
     opacity: 1; }
 .stx-panel-control * {
@@ -2445,7 +2468,7 @@ html, body {
 .smartcharts-light .stx-panel-control .stx-panel-title {
       border-right: 1px solid #999cac; }
 .smartcharts-dark .stx-panel-control .stx-panel-title {
-      border-right: 1px solid #555975; }
+      border-right: 1px solid #ffffff; }
 .smartcharts-light .stx-panel-control .stx-panel-title {
       color: #7f8397; }
 .smartcharts-dark .stx-panel-control .stx-panel-title {
@@ -2697,7 +2720,7 @@ html, body {
     color: rgba(255, 255, 255, 0);
     /* background color for mountain */ }
 .smartcharts-dark .stx_mountain_chart {
-    border: #555975;
+    border: #ffffff;
     background-color: rgba(255, 255, 255, 0.16);
     /* Optional gradient */
     color: rgba(16, 19, 32, 0);
@@ -2708,21 +2731,21 @@ html, body {
 .smartcharts-light .stx_histogram_down {
     border-left-color: #999cac; }
 .smartcharts-dark .stx_histogram_down {
-    border-left-color: #555975; }
+    border-left-color: #ffffff; }
 .stx_histogram_up {
   /* Up Bar color */
   color: #4caf50; }
 .smartcharts-light .stx_histogram_up {
     border-left-color: #999cac; }
 .smartcharts-dark .stx_histogram_up {
-    border-left-color: #555975; }
+    border-left-color: #ffffff; }
 .stx_histogram_even {
   /* Even Bar color */
   color: #999999; }
 .smartcharts-light .stx_histogram_even {
     border-left-color: #999cac; }
 .smartcharts-dark .stx_histogram_even {
-    border-left-color: #555975; }
+    border-left-color: #ffffff; }
 .stx_highlight_vector {
   /* change the color and weight of drawings and study overlays on hover */
   color: #ff0000;
@@ -2788,7 +2811,7 @@ html, body {
 .smartcharts-light .stx_volume_up {
     border: #999cac; }
 .smartcharts-dark .stx_volume_up {
-    border: #555975; }
+    border: #ffffff; }
 .stx_volume_down {
   /* Down volume color */
   color: #f95454;
@@ -2796,7 +2819,7 @@ html, body {
 .smartcharts-light .stx_volume_down {
     border: #999cac; }
 .smartcharts-dark .stx_volume_down {
-    border: #555975; }
+    border: #ffffff; }
 /* Volume underlay styles */
 .stx_volume_underlay_up {
   color: #8cc176;
@@ -2843,7 +2866,7 @@ html, body {
 .smartcharts-light .stx_annotation {
     border: 1px solid #999cac; }
 .smartcharts-dark .stx_annotation {
-    border: 1px solid #555975; }
+    border: 1px solid #ffffff; }
 .stx_annotation_bg {
   /* Annotation backgrounds */
   color: #f5f5f5; }
@@ -2940,7 +2963,7 @@ html, body {
 .smartcharts-light .stx-ico-handle.stx-grab {
       background-color: #999cac; }
 .smartcharts-dark .stx-ico-handle.stx-grab {
-      background-color: #555975; }
+      background-color: #ffffff; }
 /* hide the default panel drag */
 .stx_panel_drag {
   color: transparent; }
@@ -3213,7 +3236,7 @@ html, body {
   margin-top: 5px; }
 .smartcharts-light .cq-menu-dropdown {
     color: #7f8397;
-    background-color: #fafafb; }
+    background-color: #ffffff; }
 .smartcharts-dark .cq-menu-dropdown {
     color: #7f8397;
     background-color: #191c31; }
@@ -3232,13 +3255,9 @@ html, body {
       font-size: 1.2em;
       font-weight: 400; }
 .smartcharts-light .cq-menu-dropdown .title {
-      color: #7f8397;
-      background: #fafafb;
-      border-bottom: 1px solid #7f8397; }
+      color: #7f8397; }
 .smartcharts-dark .cq-menu-dropdown .title {
-      color: #ffffff;
-      background: #191c31;
-      border-bottom: 1px solid #191c31; }
+      color: #ffffff; }
 .smartcharts-light .cq-menu-dropdown .title > .ic-icon {
       color: #7f8397; }
 .smartcharts-dark .cq-menu-dropdown .title > .ic-icon {
@@ -3497,6 +3516,7 @@ html, body {
 /* --------- CSS Properties --------- */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 .cq-chart-controls {
   position: absolute;
   display: flex;
@@ -3730,6 +3750,7 @@ html, body {
 /* --------- CSS Properties --------- */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 .smartcharts-light .cq-crosshair-toggle:hover {
   background: rgba(0, 0, 0, 0.16); }
 .smartcharts-dark .cq-crosshair-toggle:hover {
@@ -3813,6 +3834,7 @@ html, body {
 /* --------- CSS Properties --------- */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 .stx-marker {
   position: absolute;
   display: inline-block;
@@ -3829,6 +3851,7 @@ html, body {
 /* --------- CSS Properties --------- */
 /* stylelint-disable color-no-hex */
 /* stylelint-disable value-keyword-case */
+/* Brand Blue */
 @-webkit-keyframes move-background {
   from {
     -webkit-transform: translateX(0); }
