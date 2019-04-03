@@ -18,8 +18,8 @@
   "react_mobx.js": "/app/js/react_mobx.min.js",
   "self_exclusion.js": "/app/js/self_exclusion-226ac0134b0354423868.js",
   "settings.js": "/app/js/settings-90edf5f4d945de1a9104.js",
-  "smart_chart.js": "/app/js/smart_chart-88116283be894294b9e5.js",
+  "smart_chart.js": "/app/js/smart_chart-28a726edc6a344c1e353.js",
   "statement.js": "/app/js/statement-83be0ace500a644e5479.js",
   "vendor.js": "/app/js/vendor.min.js",
-  "vendors~smart_chart.js": "/app/js/vendors~smart_chart-aa79839efe32e0d090c2.js"
+  "vendors~smart_chart.js": "/app/js/vendors~smart_chart-ba7865fb388467ddc9ea.js"
 }
