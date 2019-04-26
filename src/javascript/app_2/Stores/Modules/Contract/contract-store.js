@@ -53,18 +53,19 @@ export default class ContractStore extends BaseStore {
     drawChart(SmartChartStore, contract_info) {
         this.forget_id = contract_info.id;
         const end_time = getEndTime(contract_info);
+        const should_update_chart_type = !contract_info.tick_count && !this.is_granularity_set;
 
         if (end_time) {
             SmartChartStore.setRange(contract_info.date_start, end_time);
 
-            if (!contract_info.tick_count && !this.is_granularity_set) {
+            if (should_update_chart_type) {
                 this.handleChartType(SmartChartStore, contract_info.date_start, end_time);
             }
 
-        } else if (!this.is_left_epoch_set && contract_info.tick_count) {
+        } else if (!this.is_left_epoch_set) {
             this.is_left_epoch_set = true;
-            SmartChartStore.setTickChartView(contract_info.purchase_time);
-        } else if (!contract_info.tick_count && !this.is_granularity_set) {
+            SmartChartStore.setChartView(contract_info.purchase_time);
+        } else if (should_update_chart_type) {
             this.handleChartType(SmartChartStore, contract_info.date_start, null);
         }
 
@@ -75,7 +76,7 @@ export default class ContractStore extends BaseStore {
     }
 
     @action.bound
-    onMount(contract_id, has_left_epoch) {
+    onMount(contract_id) {
         if (contract_id === +this.contract_id) return;
         if (this.root_store.modules.smart_chart.is_contract_mode) this.onCloseContract();
         this.onSwitchAccount(this.accountSwitcherListener.bind(null));
@@ -83,7 +84,6 @@ export default class ContractStore extends BaseStore {
         this.error_message     = '';
         this.contract_id       = contract_id;
         this.smart_chart       = this.root_store.modules.smart_chart;
-        this.is_left_epoch_set = has_left_epoch;
 
         if (contract_id) {
             this.smart_chart.saveAndClearTradeChartLayout();
@@ -142,14 +142,9 @@ export default class ContractStore extends BaseStore {
 
         this.contract_info = response.proposal_open_contract;
 
-        // Set contract symbol if trade_symbol and contract_symbol doesn't match
+        // Set contract symbol if trade_symbol and contract_symbol don't match
         if (this.root_store.modules.trade.symbol !== this.contract_info.underlying) {
-            this.root_store.modules.trade.onChange({
-                target: {
-                    name : 'symbol',
-                    value: this.contract_info.underlying,
-                },
-            });
+            this.root_store.modules.trade.updateSymbol(this.contract_info.underlying);
         }
 
         this.drawChart(this.smart_chart, this.contract_info);
@@ -195,11 +190,11 @@ export default class ContractStore extends BaseStore {
         const granularity = getChartGranularity(start, expiry);
 
         if (chart_type === 'candle' && granularity !== 0) {
-            SmartChartStore.granularity = granularity;
-            SmartChartStore.chart_type  = 'candle';
+            SmartChartStore.updateGranularity(granularity);
+            SmartChartStore.updateChartType(chart_type);
         } else {
-            SmartChartStore.granularity = 0;
-            SmartChartStore.chart_type  = 'mountain';
+            SmartChartStore.updateGranularity(0);
+            SmartChartStore.updateChartType('mountain');
         }
         this.is_granularity_set = true;
     }

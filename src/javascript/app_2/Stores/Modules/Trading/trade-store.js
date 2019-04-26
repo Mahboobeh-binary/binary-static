@@ -99,11 +99,11 @@ export default class TradeStore extends BaseStore {
     @observable proposal_info = {};
     @observable purchase_info = {};
 
+    // Loading
+    @observable loading_status = '';
+
     // Query string
     query = '';
-
-    // Chart
-    chart_id = 1;
 
     debouncedProposal = debounce(this.requestProposal, 500);
     proposal_requests = {};
@@ -454,6 +454,11 @@ export default class TradeStore extends BaseStore {
     }
 
     @action.bound
+    updateLoadingStatus(status) {
+        this.loading_status = status;
+    }
+
+    @action.bound
     updateQueryString() {
         // Update the url's query string by default values of the store
         const query_params = URLHelper.updateQueryString(
@@ -467,6 +472,17 @@ export default class TradeStore extends BaseStore {
         [...query_params].forEach(param => config[param[0]] = param[1]);
 
         return config;
+    }
+
+    @action.bound
+    updateSymbol(underlying) {
+        if (!underlying) return;
+        this.onChange({
+            target: {
+                name : 'symbol',
+                value: underlying,
+            },
+        });
     }
 
     @action.bound
@@ -516,6 +532,25 @@ export default class TradeStore extends BaseStore {
         });
         this.updateQueryString();
         this.onSwitchAccount(this.accountSwitcherListener);
+        this.onLoadingMount();
+    }
+
+    @action.bound
+    onLoadingMount() {
+        setTimeout(() => {
+            this.updateLoadingStatus(localize('Retrieving market symbols...'));
+        });
+        setTimeout(() => {
+            this.updateLoadingStatus('');
+            this.updateLoadingStatus(localize('Retrieving trading times...'));
+        }, 1000);
+        setTimeout(() => {
+            this.updateLoadingStatus('');
+            this.updateLoadingStatus(localize('Retrieving chart data...'));
+        }, 2000);
+        setTimeout(() => {
+            this.root_store.ui.setAppLoading(false);
+        }, 3250);
     }
 
     @action.bound
