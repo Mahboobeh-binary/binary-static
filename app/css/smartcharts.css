@@ -32,7 +32,7 @@
 .ic-icon.ciq-favorite svg, .ic-icon.ic-favorite svg, .cq-text-icon.ciq-favorite svg, .cq-text-icon.ic-favorite svg {
     fill: none !important; }
 .smartcharts-light .ic-icon.ciq-favorite svg, .smartcharts-light .ic-icon.ic-favorite svg, .smartcharts-light .cq-text-icon.ciq-favorite svg, .smartcharts-light .cq-text-icon.ic-favorite svg {
-      stroke: #7f8397; }
+      stroke: rgba(0, 0, 0, 0.8); }
 .smartcharts-dark .ic-icon.ciq-favorite svg, .smartcharts-dark .ic-icon.ic-favorite svg, .smartcharts-dark .cq-text-icon.ciq-favorite svg, .smartcharts-dark .cq-text-icon.ic-favorite svg {
       stroke: #7f8397; }
 .smartcharts-light .ic-icon.ciq-active-favorite svg, .smartcharts-light .cq-text-icon.ciq-active-favorite svg {
@@ -64,8 +64,8 @@
 .ciq-chart-dialog .ic-icon > svg, .smartcharts-light
 .cq-menu-dropdown .title .ic-icon > svg, .smartcharts-light
 .ciq-chart-types .ciq-list-item .ic-icon > svg {
-  fill: #7f8397;
-  stroke: #7f8397; }
+  fill: rgba(0, 0, 0, 0.8);
+  stroke: rgba(0, 0, 0, 0.8); }
 .smartcharts-dark .cq-chart-controls .cq-menu-btn .ic-icon > svg, .smartcharts-dark
 .cq-filter .ic-icon > svg, .smartcharts-dark
 .cq-active-options .ic-icon > svg, .smartcharts-dark
@@ -83,8 +83,8 @@
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg); }
 .smartcharts-light .stx-btn-panel > span > svg {
-  fill: #7f8397;
-  stroke: #7f8397; }
+  fill: rgba(0, 0, 0, 0.8);
+  stroke: rgba(0, 0, 0, 0.8); }
 .smartcharts-dark .stx-btn-panel > span > svg {
   fill: #7f8397;
   stroke: #7f8397; }
@@ -818,7 +818,7 @@
               color: #7f8397;
               border-color: #ffffff; }
 .cq-chart-control-left .ciq-period .cq-menu-btn {
-  padding: 14px 5px 3px !important; }
+  padding: 0 3px !important; }
 .cq-chart-control-left .ciq-period .cq-menu-btn .bt-priod {
     line-height: 1.8em; }
 /* Mobile Style */
@@ -950,7 +950,7 @@
     height: auto; }
 .cq-chart-setting .body .ciq-list-setting .ciq-list-item {
       height: 38px;
-      line-height: 38px;
+      line-height: normal;
       cursor: default; }
 .cq-chart-setting .body .ciq-list-setting .ciq-list-item.ciq-list-item-lng {
         cursor: pointer; }
@@ -984,6 +984,8 @@
       display: inline-block;
       width: 50%;
       height: 36px;
+      line-height: 36px;
+      padding: 0;
       padding-left: 10px; }
 .cq-chart-setting .body .ciq-list-language .ciq-list-item:nth-child(2n) {
         border-left: none; }
@@ -1100,10 +1102,10 @@
     margin-bottom: 16px; }
 .ciq-list .ciq-list-item {
     cursor: pointer;
-    line-height: 32px;
+    line-height: normal;
     font-size: 1.2em;
-    height: 32px;
-    padding: 0 0 0 16px;
+    height: auto;
+    padding: 8px 16px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -1454,7 +1456,7 @@
       color: rgba(0, 0, 0, 0.8);
       background-color: #ffffff; }
 .smartcharts-dark .cq-categorical-display .subcategory {
-      color: #7f8397;
+      color: #ffffff;
       background-color: #101320; }
 .cq-categorical-display .category-title {
     display: block;
@@ -1470,7 +1472,7 @@
 .smartcharts-light .cq-categorical-display .category-title {
       color: rgba(0, 0, 0, 0.8); }
 .smartcharts-dark .cq-categorical-display .category-title {
-      color: #7f8397; }
+      color: #ffffff; }
 .cq-categorical-display .category-title.sticky-top, .cq-categorical-display .category-title.sticky-bottom {
       z-index: 8;
       padding-top: 0px;
@@ -1592,6 +1594,9 @@
     .cq-categorical-display .cq-active-item.selected {
       color: #ffffff;
       background: #2a3052; }
+.cq-categorical-display .cq-item.selected .ciq-item-display,
+    .cq-categorical-display .cq-active-item.selected .ciq-item-display {
+      font-weight: bold; }
 .smartcharts-light .cq-categorical-display .cq-item.selected .right .ic-icon svg, .smartcharts-light
     .cq-categorical-display .cq-active-item.selected .right .ic-icon svg {
       fill: #ffffff;
@@ -1747,7 +1752,12 @@
 .cq-comparison .cq-comparison-item .right {
       justify-content: flex-end;
       margin-left: 1.5em;
-      margin-right: 5px; }
+      margin-right: 5px;
+      font-weight: bold; }
+.smartcharts-light .cq-comparison .cq-comparison-item .right {
+        color: #7f8397; }
+.smartcharts-dark .cq-comparison .cq-comparison-item .right {
+        color: #ffffff; }
 .cq-comparison .cq-comparison-item:hover {
       box-shadow: 0 2px 8px 0 rgba(42, 48, 82, 0.14);
       border-radius: 3px; }
@@ -1809,6 +1819,7 @@
 .cq-chart-title.ciq-menu.ciq-enabled .cq-menu-btn > .cq-symbol-select-btn > .ic-icon.cq-symbol-dropdown {
       display: block;
       margin-right: 0px;
+      margin-left: 10px;
       width: 24px; }
 .smartcharts-light .cq-chart-title.ciq-menu.ciq-enabled .cq-menu-btn > .cq-symbol-select-btn > .ic-icon.cq-symbol-dropdown svg {
         fill: rgba(0, 0, 0, 0.8); }
@@ -1872,7 +1883,7 @@
 .cq-chart-title .cq-symbol-select-btn .cq-symbol-info {
       display: flex;
       flex-direction: column;
-      margin: 0 20px; }
+      margin: 0 10px 0 20px; }
 .cq-chart-title .cq-symbol-select-btn .cq-symbol-info .cq-market {
         font-size: 1em;
         line-height: 1.5; }
@@ -1899,17 +1910,52 @@
         color: rgba(0, 0, 0, 0.8); }
 .smartcharts-dark .cq-chart-title .cq-symbol-select-btn .cq-symbol {
         color: #ffffff; }
-.cq-chart-title .cq-symbol-select-btn .cq-chart-price > * {
+.cq-chart-title .cq-symbol-select-btn .cq-symbol.closed-no-opentime {
+        line-height: calc(24px + 1.13em); }
+.cq-chart-title .cq-symbol-select-btn .cq-chart-closed .cq-closed-icon {
+      width: 12px;
+      margin-right: 5px;
+      height: 12px;
+      margin-top: 3px; }
+.smartcharts-light .cq-chart-title .cq-symbol-select-btn .cq-chart-closed .cq-closed-icon {
+        fill: rgba(0, 0, 0, 0.8); }
+.smartcharts-dark .cq-chart-title .cq-symbol-select-btn .cq-chart-closed .cq-closed-icon {
+        fill: #7f8397; }
+.cq-chart-title .cq-symbol-select-btn .cq-chart-closed .cq-closed-icon svg {
+        left: 0;
+        position: absolute; }
+.cq-chart-title .cq-symbol-select-btn .cq-chart-closed .cq-closed-opening {
+      font-size: 1.2em;
+      text-align: left;
+      line-height: 1.5; }
+.cq-chart-title .cq-symbol-select-btn .cq-chart-closed .cq-closed-opening .cq-closed-opening-time {
+        font-weight: bold; }
+.smartcharts-light .cq-chart-title .cq-symbol-select-btn .cq-chart-closed .cq-closed-opening .cq-closed-opening-time {
+          color: rgba(0, 0, 0, 0.8); }
+.smartcharts-dark .cq-chart-title .cq-symbol-select-btn .cq-chart-closed .cq-closed-opening .cq-closed-opening-time {
+          color: #ffffff; }
+.cq-chart-title .cq-symbol-select-btn .cq-symbol-closed-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      width: 48px;
+      height: 20px;
+      border: 2px solid #e31c4b;
+      color: #e31c4b;
+      border-radius: 4px;
+      text-transform: uppercase; }
+.cq-chart-title .cq-symbol-select-btn .cq-chart-price > *, .cq-chart-title .cq-symbol-select-btn .cq-chart-closed > * {
       position: relative; }
-.cq-chart-title .cq-symbol-select-btn .cq-chart-price {
+.cq-chart-title .cq-symbol-select-btn .cq-chart-price, .cq-chart-title .cq-symbol-select-btn .cq-chart-closed {
       display: flex;
       vertical-align: text-bottom; }
-.smartcharts-light .cq-chart-title .cq-symbol-select-btn .cq-chart-price {
+.smartcharts-light .cq-chart-title .cq-symbol-select-btn .cq-chart-price, .smartcharts-light .cq-chart-title .cq-symbol-select-btn .cq-chart-closed {
         color: rgba(0, 0, 0, 0.8); }
-.smartcharts-dark .cq-chart-title .cq-symbol-select-btn .cq-chart-price {
+.smartcharts-dark .cq-chart-title .cq-symbol-select-btn .cq-chart-price, .smartcharts-dark .cq-chart-title .cq-symbol-select-btn .cq-chart-closed {
         color: #7f8397; }
 .cq-chart-title .cq-menu-dropdown {
-    box-shadow: 0 0 0.63em 0.03em rgba(0, 0, 0, 0.14);
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.24);
     left: 0px;
     bottom: auto;
     -webkit-transform: translateX(0) translateY(-3em);
@@ -2165,9 +2211,9 @@
 .smartcharts-dark .cq-last-digits .cq-bars .max {
       color: #39b19d; }
 .cq-last-digits .cq-bars .cq-bar-value {
-      margin: -16px 0 0 -5px;
+      margin: -16px 0 0 -6px;
       transition: opacity 0.8s linear;
-      font-size: 10px;
+      font-size: 12px;
       opacity: 0; }
 .cq-last-digits .cq-bars .cq-bar-value.show {
         opacity: 1; }
@@ -2197,7 +2243,8 @@
         background-color: #39b19d; }
 .cq-last-digits .cq-bar-footer {
     text-align: center;
-    width: 325px; }
+    width: 325px;
+    font-size: 12px; }
 .smartcharts-light .cq-last-digits .cq-bar-footer {
       color: #000000; }
 .smartcharts-dark .cq-last-digits .cq-bar-footer {
@@ -2255,7 +2302,7 @@ html, body {
   transition: height 0.4s ease-in-out; }
 .smartcharts-light .chartContainer {
     background: #ffffff;
-    color: #999cac; }
+    color: #555975; }
 .smartcharts-dark .chartContainer {
     background: #101320;
     color: #555975; }
@@ -2589,23 +2636,27 @@ html, body {
 /* -------- Crosshairs lines and labels-------- */
 .stx-float-price,
 .stx-float-date {
-  border-radius: 3px;
   color: #fff; }
 .smartcharts-light .stx-float-price, .smartcharts-light
   .stx-float-date {
     background-color: rgba(127, 131, 151, 0.88); }
 .smartcharts-dark .stx-float-price, .smartcharts-dark
   .stx-float-date {
-    background-color: #555975; }
+    background-color: #2a3052; }
+.stx-float-price {
+  border-radius: 3px; }
 .stx-float-date {
   /* Crosshair Floating x-axis date label*/
   position: absolute;
   font-size: 12px;
   font-family: 'Helvetica';
   z-index: 3;
-  padding: 1px 6px;
+  padding: 3px 6px;
   text-align: center;
-  width: auto; }
+  width: auto;
+  height: 18px;
+  line-height: 18px;
+  font-weight: bold; }
 .stx_crosshair {
   /* Standard Crosshair lines color */
   position: absolute;
@@ -2613,7 +2664,7 @@ html, body {
 .smartcharts-light .stx_crosshair {
     background-color: rgba(127, 131, 151, 0.32); }
 .smartcharts-dark .stx_crosshair {
-    background-color: #ffffff; }
+    background-color: rgba(127, 131, 151, 0.3); }
 .stx_crosshair_drawing {
   /* Crosshairs lines when drawing */
   position: absolute;
@@ -2621,7 +2672,7 @@ html, body {
 .smartcharts-light .stx_crosshair_drawing {
     background-color: rgba(127, 131, 151, 0.32); }
 .smartcharts-dark .stx_crosshair_drawing {
-    background-color: #ffffff; }
+    background-color: rgba(127, 131, 151, 0.3); }
 .crossY, .stx_crosshair_y {
   /* Vertical Crosshair line size */
   left: 0px;
@@ -2660,7 +2711,7 @@ html, body {
   /* Default Grid */
   width: 1px;
   opacity: 1;
-  border-style: solid; }
+  border: none; }
 .smartcharts-light .stx_grid {
     background: #ffffff;
     color: rgba(0, 0, 0, 0.04); }
@@ -2669,9 +2720,12 @@ html, body {
     color: #191c31; }
 .stx_grid_border {
   /* Default Grid borders */
-  color: #999999;
-  border-style: solid;
-  opacity: 0; }
+  opacity: 0.2;
+  border-style: solid; }
+.smartcharts-light .stx_grid_border {
+    border-color: rgba(153, 156, 172, 0.32); }
+.smartcharts-dark .stx_grid_border {
+    border-color: rgba(127, 131, 151, 0.3); }
 /* -------- Chart Type Styles -------- */
 .stx_line_chart {
   /* Default width for line Charts */
@@ -2715,13 +2769,13 @@ html, body {
   /* Optional line width */ }
 .smartcharts-light .stx_mountain_chart {
     border: #999cac;
-    background-color: rgba(153, 156, 172, 0.16);
+    background-color: rgba(153, 156, 172, 0.36);
     /* Optional gradient */
     color: rgba(255, 255, 255, 0);
     /* background color for mountain */ }
 .smartcharts-dark .stx_mountain_chart {
-    border: #ffffff;
-    background-color: rgba(255, 255, 255, 0.16);
+    border: white;
+    background-color: rgba(255, 255, 255, 0.36);
     /* Optional gradient */
     color: rgba(16, 19, 32, 0);
     /* background color for mountain */ }
@@ -2847,7 +2901,7 @@ html, body {
   /* Default color for histograms */
   opacity: 0.2; }
 .smartcharts-light .stx_histogram {
-    color: #999cac; }
+    color: #555975; }
 .smartcharts-dark .stx_histogram {
     color: #555975; }
 /* -------- Annotations -------- */
@@ -2914,18 +2968,27 @@ html, body {
 .stx_grid_dark {
   /* Default Grid dividers */
   opacity: 1;
-  opacity: 0.9;
-  border-style: solid; }
+  opacity: 0.95;
+  border-style: solid;
+  border: none; }
 .smartcharts-light .stx_grid_dark {
-    color: rgba(0, 0, 0, 0.04); }
+    color: #555975; }
 .smartcharts-dark .stx_grid_dark {
-    color: #191c31; }
+    color: #555975; }
 .stx_yaxis, .stx_xaxis, .stx_xaxis_dark {
   font-size: 10px;
   font-family: 'Roboto'; }
 .smartcharts-light .stx_yaxis, .smartcharts-light .stx_xaxis, .smartcharts-light .stx_xaxis_dark {
-    color: #999cac; }
+    color: #555975; }
 .smartcharts-dark .stx_yaxis, .smartcharts-dark .stx_xaxis, .smartcharts-dark .stx_xaxis_dark {
+    color: #555975; }
+.stx_price_label {
+  font-size: 12px;
+  font-family: 'Roboto';
+  font-weight: bold; }
+.smartcharts-light .stx_price_label {
+    color: #555975; }
+.smartcharts-dark .stx_price_label {
     color: #555975; }
 /* --------------------------------------------------------- CHART SDK --------------------------------------------------------- */
 /* -------- Axis tabs and current Prices -------- */
@@ -3045,7 +3108,14 @@ html, body {
         color: #ffffff; }
 .smartcharts-dark .cq-spot.cq-endpoint .cq-endpoint-label {
         background-color: #ff9933;
-        color: #2a3052; }
+        color: #ffffff; }
+.closed-chart .cq-spot {
+  -webkit-animation: none;
+          animation: none; }
+.smartcharts-light .closed-chart .cq-spot:before {
+    color: #d6d6d6; }
+.smartcharts-dark .closed-chart .cq-spot:before {
+    color: #303342; }
 @-webkit-keyframes pulse {
   0% {
     box-shadow: 0 0 0 0 rgba(255, 153, 51, 0.6); }
@@ -3105,7 +3175,7 @@ html, body {
 .smartcharts-light .annotationCancel, .smartcharts-light
   .annotationSave {
     background: #ffffff;
-    color: #7f8397; }
+    color: rgba(0, 0, 0, 0.8); }
 .smartcharts-dark .annotationCancel, .smartcharts-dark
   .annotationSave {
     background: #101320;
@@ -3201,10 +3271,12 @@ html, body {
     left: 90px; }
 .smartcharts .cq-chart-control-left .cq-notifications {
     right: 100px; }
+.smartcharts--has-markers .stx-subholder {
+    z-index: 108 !important; }
 .ciq-menu {
   position: relative; }
 .smartcharts-light .ciq-menu {
-    color: #7f8397; }
+    color: rgba(0, 0, 0, 0.8); }
 .smartcharts-dark .ciq-menu {
     color: #7f8397; }
 .ciq-menu > span {
@@ -3372,11 +3444,10 @@ html, body {
   display: none; }
 .drag-price {
   display: block;
-  height: 25px;
+  height: 24px;
   top: -11px;
   position: absolute;
-  right: 0px;
-  border-radius: 5px;
+  right: -1px;
   border: 1px solid inherit; }
 /*hover*/
 .no-touch .price-arrow span {
@@ -3396,20 +3467,21 @@ html, body {
     opacity: 1; }
 /*hover*/
 .price {
-  font-size: 1.4em;
-  font-weight: 300;
+  font-size: 12px;
+  font-weight: bold;
   display: block;
-  padding: 1px 6px;
-  line-height: 23px;
+  padding: 3px 6px;
+  line-height: 18px;
   overflow: hidden; }
 .draggable .price {
-  padding-right: 16px; }
+  padding-left: 16px; }
 .draggable .price:after {
+    font-weight: normal;
     content: '\2261';
     font-size: 25px;
     position: absolute;
-    right: 1px;
-    top: -1px;
+    left: 1px;
+    top: 1px;
     -webkit-transform: scaleX(0.8);
             transform: scaleX(0.8); }
 /*--------------------------------------------------*/
@@ -3602,7 +3674,7 @@ html, body {
         font-size: 1em; }
 .smartcharts-light .cq-chart-controls .ciq-menu .cq-menu-btn > .ic-icon .ic-subtitle, .smartcharts-light
         .cq-chart-controls .ciq-menu .cq-menu-btn > .cq-toggle .ic-subtitle {
-          color: #7f8397; }
+          color: rgba(0, 0, 0, 0.8); }
 .smartcharts-dark .cq-chart-controls .ciq-menu .cq-menu-btn > .ic-icon .ic-subtitle, .smartcharts-dark
         .cq-chart-controls .ciq-menu .cq-menu-btn > .cq-toggle .ic-subtitle {
           color: #7f8397; }
@@ -3673,6 +3745,8 @@ html, body {
       box-shadow: 2px 0.3px 0px 0 #2a3052; }
 .smartcharts-dark .cq-chart-control-left .cq-chart-controls .ciq-menu .stxMenuActive {
       box-shadow: 2px 0.3px 0px 0 #ffffff; }
+.cq-chart-control-left .cq-chart-controls .ciq-menu .cq-menu-btn {
+      padding: 0 5px; }
 /* Mobile Style */
 .smartcharts-mobile .cq-chart-controls {
   justify-content: space-around;
@@ -3814,7 +3888,8 @@ html, body {
       display: block; }
 .stx-crosshair-on .cq-crosshair .cq-crosshair-content .row {
       font-size: 1.2em;
-      line-height: 18px; }
+      line-height: 18px;
+      margin-bottom: 4px; }
 .stx-crosshair-on .cq-crosshair .cq-crosshair-content .row span:first-child {
         padding-right: 5px; }
 .stx-crosshair-on .cq-crosshair .cq-crosshair-content .row span:last-child {
