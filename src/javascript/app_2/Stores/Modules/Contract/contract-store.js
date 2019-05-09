@@ -89,7 +89,7 @@ export default class ContractStore extends BaseStore {
     }
 
     @action.bound
-    onMount(contract_id) {
+    onMount(contract_id, is_static) {
         if (contract_id === +this.contract_id) return;
         if (this.root_store.modules.smart_chart.is_contract_mode) this.onCloseContract();
         this.onSwitchAccount(this.accountSwitcherListener.bind(null));
@@ -99,6 +99,7 @@ export default class ContractStore extends BaseStore {
         this.smart_chart       = this.root_store.modules.smart_chart;
 
         if (contract_id) {
+            if (is_static) this.smart_chart.is_static_chart = true;
             this.smart_chart.saveAndClearTradeChartLayout();
             this.smart_chart.setContractMode(true);
             WS.subscribeProposalOpenContract(this.contract_id, this.updateProposal, false);

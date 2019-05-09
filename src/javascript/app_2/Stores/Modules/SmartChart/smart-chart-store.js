@@ -20,6 +20,7 @@ export default class SmartChartStore extends BaseStore {
     @observable markers  = observable.object({});
 
     @observable is_contract_mode = false;
+    @observable is_static_chart  = false;
     @observable is_title_enabled = true;
 
     @observable range = observable.object({
@@ -59,6 +60,7 @@ export default class SmartChartStore extends BaseStore {
 
     @action.bound
     cleanupContractChartView() {
+        this.is_static_chart = false;
         this.removeBarriers();
         this.removeMarkers();
         this.removeRange();
