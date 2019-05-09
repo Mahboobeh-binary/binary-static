@@ -65,7 +65,6 @@ export default class SmartChartStore extends BaseStore {
         this.removeMarkers();
         this.removeRange();
         this.resetScrollToLeft();
-        this.setContractMode(false);
     }
 
     @action.bound
@@ -176,6 +175,7 @@ export default class SmartChartStore extends BaseStore {
             if (this.trade_chart_symbol !== this.root_store.modules.trade.symbol) {
                 this.root_store.modules.trade.updateSymbol(this.trade_chart_symbol);
             }
+            this.setContractMode(false);
         });
     }
 
