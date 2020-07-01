@@ -1,11 +1,10 @@
 import React                 from 'react';
-import Loading               from './loading.jsx';
 import { Fieldset, FormRow } from './forms.jsx';
 
 export const Salutation = ({ className, row_class, row_id }) => (
     <FormRow
         type='select'
-        className={className}
+        className={`center-select-m ${className}`}
         id='salutation'
         label={it.L('Title')}
         row_class={row_class}
@@ -23,7 +22,7 @@ export const FirstName = ({ className, hint, row_class, row_id }) => (
         type='text'
         id='first_name'
         label={it.L('First name')}
-        attributes={{ maxLength: '50', className: className || undefined, 'data-lpignore': true }}
+        attributes={{ maxLength: '50', className: `center-text-m ${className || ''}`, 'data-lpignore': true }}
         row_class={row_class}
         row_id={row_id}
         hint={hint}
@@ -35,7 +34,7 @@ export const LastName = ({ className, hint, row_class, row_id }) => (
         type='text'
         id='last_name'
         label={it.L('Family name')}
-        attributes={{ maxLength: '50', className: className || undefined, 'data-lpignore': true }}
+        attributes={{ maxLength: '50', className: `center-text-m ${className || ''}`, 'data-lpignore': true }}
         hint={hint}
         row_id={row_id}
         row_class={row_class}
@@ -46,10 +45,11 @@ export const DateOfBirth = ({ className, row_class, row_id }) => (
     <FormRow
         type='text'
         id='date_of_birth'
+        className='center-text-m'
         label={it.L('Date of birth')}
         row_class={row_class}
         row_id={row_id}
-        attributes={{ size: '12', readOnly: true, className: className || undefined, 'data-lpignore': true }}
+        attributes={{ size: '12', readOnly: true, className: `center-text-m ${className || ''}`, 'data-lpignore': true, required: true }}
     />
 );
 
@@ -82,6 +82,7 @@ export const AccountOpeningReason  = ({ row_id, row_class }) => (
     <FormRow
         type='select'
         id='account_opening_reason'
+        className='center-select-m'
         label={it.L('Account opening reason')}
         row_id={row_id}
         row_class={row_class}
@@ -97,6 +98,7 @@ export const AddressLine1 = ({ hint }) => (
     <FormRow
         type='text'
         id='address_line_1'
+        className='center-text-m'
         label={it.L('First line')}
         attributes={{ maxLength: '70', 'data-lpignore': true }}
         hint={hint}
@@ -107,6 +109,7 @@ export const AddressLine2 = ({ hint }) => (
     <FormRow
         type='text'
         id='address_line_2'
+        className='center-text-m'
         label={it.L('Second line')}
         attributes={{ maxLength: '70', 'data-lpignore': true }}
         hint={hint}
@@ -117,6 +120,7 @@ export const AddressCity = ({ hint }) => (
     <FormRow
         type='text'
         id='address_city'
+        className='center-text-m'
         label={it.L('Town/City')}
         attributes={{ maxLength: 35, 'data-lpignore': true }}
         hint={hint}
@@ -131,6 +135,7 @@ export const AddressPostcode = ({ children, hint }) => (
     <FormRow
         type='text'
         id='address_postcode'
+        className='center-text-m'
         label={it.L('Postal/ZIP code')}
         attributes={{ maxLength: '20', 'data-lpignore': true }}
         hint={hint}
@@ -145,6 +150,7 @@ export const Phone = ({ hint, row_class, row_id }) => (
     <FormRow
         type='text'
         id='phone'
+        className='center-text-m'
         label={it.L('Mobile number')}
         attributes={{ 'data-lpignore': true }}
         hint={hint}
@@ -223,7 +229,7 @@ export const ClientMessage = () => (
 export const TaxInformationForm = () => (
     <React.Fragment>
         <div id='tax_information_info' className='gr-12 gr-padding-10'>
-            <label>{it.L('Binary Investments (Europe) Ltd. is required to collect your tax information.')}&nbsp;
+            <label>{it.L('Deriv Investments (Europe) Ltd. is required to collect your tax information.')}&nbsp;
                 <a id='tax_information_note_toggle' className='toggle-arrow' href='javascript:;'>{it.L('Read more.')}</a>
             </label>
 
@@ -264,43 +270,22 @@ export const TaxInformationForm = () => (
             label={it.L('Tax identification number')}
             tooltip={it.L('Please provide the tax identification number for the country where you are a tax resident. If you cannot provide this information, kindly contact our customer support team.')}
             id='tax_identification_number'
+            className='center-text-m'
             row_id='row_tax_identification_number'
             row_class='invisible'
             attributes={{ maxLength: 20, 'data-lpignore': true }}
         />
 
+        <p id='tax_id_warning' className='notice-msg invisible gr-9 gr-centered'>
+            {it.L('This Tax Identification Number (TIN) is invalid. You may continue, but to facilitate future payment processes, valid tax information will be required.')}
+        </p>
+
         <div id='tax_information_declaration'>
             <div className='gr-12 gr-padding-10'>
                 <input type='checkbox' id='chk_tax_id' />
                 <label htmlFor='chk_tax_id'>
-                    {it.L('I hereby confirm that the tax information I provided is true and complete. I will also inform Binary Investments (Europe) Ltd. about any changes to this information.')}
+                    {it.L('I hereby confirm that the tax information I provided is true and complete. I will also inform Deriv Investments (Europe) Ltd. about any changes to this information.')}
                 </label>
-            </div>
-        </div>
-    </React.Fragment>
-);
-
-export const GeocodeValidation = ({ className }) => (
-    <React.Fragment>
-        <div className={className}>
-            <div className='geocode-btn-container'>
-                <a href='javascript:;' id='geocode_validate' className='geocode-btn invisible' ><span>{it.L('Check address')}</span></a>
-            </div>
-        </div>
-        <div id='geocode_status' className='gr-row'>
-            <div className='gr-10 gr-centered gr-padding-10 center-text'>
-                <Loading is_invisible />
-                <p id='geocode_error' className='notice-msg invisible'>
-                    {it.L('We could not recognise your address. You may proceed but please ensure that your address is complete and accurate.')}
-                </p>
-                <div id='geocode_success' className='invisible'>
-                    <div className='success-msg'>
-                        <ul className='checked'>
-                            <li>{it.L('Your address has been recognised by our system.')}</li>
-                        </ul>
-                        <p>{it.L('However, we will require further documentation to authenticate your account in the future.')}</p>
-                    </div>
-                </div>
             </div>
         </div>
     </React.Fragment>

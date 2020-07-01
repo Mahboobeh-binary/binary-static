@@ -71,6 +71,8 @@ const JobDescriptions = () => (
                     { header: it.L('PostgreSQL Database Administrator (DBA)'), subsection: 'postgresql_database_administrator', text: it.L('As our PostgreSQL Database Administrator, you will plan, implement, and manage the database systems that are essential to the architecture of our high-traffic binary options trading platform.') },
 
                     { header: it.L('UI/UX Designer'), subsection: 'ui_ux_designer', text: it.L('As our UI/UX Designer, you will play a key role in conceptualising and defining user experience and interaction across multiple websites and applications.'), className: 'one-line gr-nowrap gr-wrap-p' },
+
+                    { header: it.L('Technical Writer'), subsection: 'technical_writer', text: it.L('You will combine your excellent command of English and your strong understanding of the technology we use to produce well-structured, concise, and easy-to-understand technical documentation as well as project and architectural plans.'), className: 'one-line gr-nowrap gr-wrap-p' },
                 ]}
             />
 
@@ -103,7 +105,7 @@ const JobDescriptions = () => (
                 id='marketing'
                 title={it.L('Marketing')}
                 sections={[
-                    { header: it.L('Affiliate/Country Manager'),     subsection: 'affiliate_country_manager',     text: it.L('The Country Manager is expected to acquire, service, manage, and expand our network of active affiliates in the countries where Binary Group targets to be represented. You will also contribute your energy, skills, and knowledge of the local business culture to increase our rapid growth rate worldwide.') },
+                    { header: it.L('Affiliate/Country Manager'),     subsection: 'affiliate_country_manager',     text: it.L('The Country Manager is expected to acquire, service, manage, and expand our network of active affiliates in the countries where Deriv Group targets to be represented. You will also contribute your energy, skills, and knowledge of the local business culture to increase our rapid growth rate worldwide.') },
                     { header: it.L('Technical Marketing Executive'), subsection: 'technical_marketing_executive', text: it.L('As our Technical Marketing Executive, you will act on data-driven information and assist in troubleshooting issues to further nurture and grow our client base.') },
                     { header: it.L('Marketing Executive'),           subsection: 'marketing_executive',           text: it.L('As our Marketing Executive, you will coordinate and execute marketing campaigns across a variety of channels, and continuously identify the best ways to reach current and prospective customers.') },
                     { header: it.L('Graphics Designer'),             subsection: 'graphics_designer',             text: it.L('As our Graphic Designer, you will develop high-impact graphics and visual elements such as images and icons for our websites and applications. You will play an essential role in creating user interface assets that bring our products and users closer together.') },

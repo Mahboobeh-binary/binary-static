@@ -10,6 +10,7 @@ import {
     TabContentContainer,
     TabsSubtabs,
     TabContent }            from  '../_common/components/tabs.jsx';
+import DerivBanner          from '../_common/components/deriv_banner.jsx';
 
 const Arrows = ({ direction, parent }) => (
     <div className='align-self-center gr-1 gr-hide-p'>
@@ -164,6 +165,9 @@ const Home = () => {
 
     return (
         <React.Fragment>
+            <div className='container gr-parent gr-padding-30'>
+                <DerivBanner content_name='binary-home-page' />
+            </div>
             <div id='banner'>
                 <div className='container gr-padding-20'>
                     <h1 className='dark center-text gr-padding-20 gr-child'>{it.L('Online Trading with [_1]', `<strong>${it.website_name}</strong>`)}</h1>
@@ -210,7 +214,7 @@ const Home = () => {
                                     image='images/pages/home/binary_options.svg'
                                     image_one='images/pages/home/icons/demo.svg'
                                     list_header_one={it.L('Virtual Account')}
-                                    list_text_one={it.L('Practice account with replenishable USD 10,000 virtual credit.')}
+                                    list_text_one={it.L('Practice account with replenishable 10,000 USD virtual credit.')}
                                     image_two='images/pages/home/icons/real.svg'
                                     list_header_two={it.L('Real Account')}
                                     list_text_two={it.L('Real-money accounts with your choice of fiat and crypto currency.')}
@@ -218,18 +222,18 @@ const Home = () => {
                             </TabContent>
                             <TabContent id='mt5'>
                                 <AccountsTabContent
-                                    header={it.L('Trade Forex and CFDs on our popular multi-asset platform.')}
+                                    header={it.L('Trade forex and CFDs on our popular multi-asset platform.')}
                                     mobile_class='padding-top-20'
                                     mobile_header={it.L('MetaTrader 5')}
                                     image='images/pages/home/MT5.svg'
                                     image_one='images/pages/home/icons/demo.svg'
                                     list_header_one={it.L('MT5 Demo')}
-                                    list_text_one={it.L('Practice account with replenishable USD 10,000 virtual credit.')}
+                                    list_text_one={it.L('Practice account with replenishable 10,000 USD virtual credit.')}
                                     image_two='images/pages/home/icons/mt5_financial.svg'
                                     list_header_two={it.L('MT5 Financial')}
-                                    list_text_two={it.L('MT5 real-money account for Forex and CFDs.')}
+                                    list_text_two={it.L('MT5 real-money account for forex and CFDs.')}
                                     image_three='images/pages/home/icons/mt5_volatility.svg'
-                                    list_header_three={it.L('MT5 Synthetic Indices')}
+                                    list_header_three={it.L('MT5 Synthetic')}
                                     list_text_three={it.L('MT5 real-money account for Synthetic Indices only.')}
                                 />
                             </TabContent>
@@ -322,10 +326,11 @@ const Home = () => {
                             <h3 className='no-margin'>{it.L('Award-winning trading excellence')}</h3>
                         </div>
                         <div className='award-icons'>
-                            <div className='award-icon'>
+                            {/* TODO: add this later when we have sufficient awards for two lines */}
+                            {/* <div className='award-icon'>
                                 <img className='responsive' src={it.url_for('images/pages/home/awards/t2w-2010.svg')} alt='Trade2Win Award' />
                                 <span className='caption'>{it.L('Trade2Win')}</span>
-                            </div>
+                            </div> */}
                             <div className='award-icon'>
                                 <img className='responsive' src={it.url_for('images/pages/home/awards/gbfr-2012.svg')} alt='Global Banking and Finance Review 2012' />
                                 <span className='caption'>{it.L('Global Banking and Finance Review')}</span>
@@ -348,6 +353,10 @@ const Home = () => {
                             </div>
                             <div className='award-icon'>
                                 <img className='responsive' src={it.url_for('images/pages/home/awards/gbm-2018.svg')} alt='Global Brands Magazine 2018' />
+                                <span className='caption'>{it.L('Global Brands Magazine')}</span>
+                            </div>
+                            <div className='award-icon'>
+                                <img className='responsive' src={it.url_for('images/pages/home/awards/gbm-2019.svg')} alt='Global Brands Magazine 2019' />
                                 <span className='caption'>{it.L('Global Brands Magazine')}</span>
                             </div>
                         </div>
@@ -389,7 +398,7 @@ const Home = () => {
                         <p className='center-text'>{it.L('We support hundreds of deposit and withdrawal options, including Bitcoin.')}</p>
 
                         <div className='gr-12 gr-padding-30'>
-                            <div className='gr-row'>
+                            <div className='gr-row gr-row-align-center'>
                                 <PaymentLogo />
                             </div>
                         </div>

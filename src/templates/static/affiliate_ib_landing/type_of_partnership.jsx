@@ -126,8 +126,8 @@ const TypesOfPartnership = () => (
                                     </TabContent>
                                     <TabContent id='cpa'>
                                         <div className='gr-11 gr-centered text-align-left'>
-                                            <h3 className='no-margin'>{it.L('Cost per acquisition (CPA) for EU Affiliates only')}</h3>
-                                            <p>{it.L('Earn USD 100 in commission for each successful referral. Your referred client must open a [_1]real money investment account[_2] through your unique affiliate link and deposit a total of USD 100 or more (one-time or accumulative) in the account. This commission plan is only available to Affiliates based in the EU.', '<strong>', '</strong>')}</p>
+                                            <h3 className='no-margin'>{it.L('Cost per acquisition (CPA) for EU clients only')}</h3>
+                                            <p>{it.L('Earn 100 USD in commission for each successful referral. Your referred client must open a [_1]real account[_2] through your unique affiliate link and deposit a total of 100 USD or more (one-time or accumulative) in the account. This commission plan is only available for clients based in the EU.', '<strong>', '</strong>')}</p>
                                             <a href={it.affiliate_signup_url} className='button center-text gr-centered gr-padding-20' target='_blank' rel='noopener noreferrer'>
                                                 <span>{it.L('Sign up now')}</span>
                                             </a>
@@ -145,7 +145,7 @@ const TypesOfPartnership = () => (
                         <div className='gr-10 gr-12-m gr-parent gr-centered'>
                             <h3 id='ib_header' className='secondary-color'>{it.L('Commision structure')}</h3>
 
-                            <h3>{it.L('Synthetic Indices Account')}</h3>
+                            <h3>{it.L('Synthetic Account')}</h3>
                             <Table
                                 data={{
                                     thead: [
@@ -154,71 +154,99 @@ const TypesOfPartnership = () => (
                                             { text: it.L('Commission per round trade') },
                                         ],
                                         [
-                                            { text: it.L('$ per USD 100,000 of turnover'), className: 'center-text' },
+                                            { text: it.L('$ per 100,000 USD of turnover'), className: 'center-text' },
                                         ],
                                     ],
                                     tbody: [
                                         [
                                             { text: it.L('Crash 1000 Index') },
-                                            { text: it.L('0.20') },
+                                            { text: it.L('0.50') },
                                         ],
                                         [
                                             { text: it.L('Crash 500 Index') },
-                                            { text: it.L('0.30') },
+                                            { text: it.L('0.70') },
                                         ],
                                         [
                                             { text: it.L('Boom 1000 Index') },
-                                            { text: it.L('0.20') },
+                                            { text: it.L('0.50') },
                                         ],
                                         [
                                             { text: it.L('Boom 500 Index') },
-                                            { text: it.L('0.30') },
+                                            { text: it.L('0.70') },
                                         ],
                                         [
-                                            { text: it.L('Volatility 100 Index') },
-                                            { text: it.L('15.00') },
+                                            { text: it.L('Range Break 100 Index') },
+                                            { text: it.L('0.80') },
                                         ],
                                         [
-                                            { text: it.L('Volatility 75 Index') },
-                                            { text: it.L('10.00') },
+                                            { text: it.L('Range Break 200 Index') },
+                                            { text: it.L('0.40') },
                                         ],
                                         [
-                                            { text: it.L('Volatility 50 Index') },
-                                            { text: it.L('7.50') },
-                                        ],
-                                        [
-                                            { text: it.L('Volatility 25 Index') },
-                                            { text: it.L('3.50') },
+                                            { text: it.L('Step Index') },
+                                            { text: it.L('0.20') },
                                         ],
                                         [
                                             { text: it.L('Volatility 10 Index') },
                                             { text: it.L('1.50') },
                                         ],
                                         [
-                                            { text: it.L('HF Volatility 100 Index') },
+                                            { text: it.L('Volatility 10 (1s) Index') },
+                                            { text: it.L('1.50') },
+                                        ],
+                                        [
+                                            { text: it.L('Volatility 25 Index') },
+                                            { text: it.L('3.50') },
+                                        ],
+                                        [
+                                            { text: it.L('Volatility 25 (1s) Index') },
+                                            { text: it.L('3.50') },
+                                        ],
+                                        [
+                                            { text: it.L('Volatility 50 Index') },
+                                            { text: it.L('7.50') },
+                                        ],
+                                        [
+                                            { text: it.L('Volatility 50 (1s) Index') },
+                                            { text: it.L('7.50') },
+                                        ],
+                                        [
+                                            { text: it.L('Volatility 75 Index') },
+                                            { text: it.L('10.00') },
+                                        ],
+                                        [
+                                            { text: it.L('Volatility 75 (1s) Index') },
+                                            { text: it.L('10.00') },
+                                        ],
+                                        [
+                                            { text: it.L('Volatility 100 Index') },
                                             { text: it.L('15.00') },
                                         ],
                                         [
-                                            { text: it.L('HF Volatility 50 Index') },
-                                            { text: it.L('7.50') },
+                                            { text: it.L('Volatility 100 (1s) Index') },
+                                            { text: it.L('15.00') },
                                         ],
                                         [
                                             { text: it.L('HF Volatility 10 Index') },
                                             { text: it.L('1.50') },
                                         ],
                                         [
-                                            { text: it.L('Step Index') },
-                                            { text: it.L('0.20') },
+                                            { text: it.L('HF Volatility 50 Index') },
+                                            { text: it.L('7.50') },
+                                        ],
+                                        [
+                                            { text: it.L('HF Volatility 100 Index') },
+                                            { text: it.L('15.00') },
                                         ],
                                     ],
                                 }}
                             />
 
-                            <p className='text-align-left'>{it.L('For example, a round trade (i.e. open and close position) of 1 lot of Vol 75 Index for a price of USD 125,000 would pay USD 12.5.')}</p>
-                            <p className='text-align-left'><strong>{it.L('USD 10 x 1 lot x USD 125,000/100,000 = USD 12.5')}</strong></p>
+                            <p className='text-align-left'>{it.L('For example, a round trade (i.e. open and close position) of 1 lot of Vol 75 Index for a price of 125,000 USD would pay 12.5 USD.')}</p>
+                            <p className='text-align-left'><strong>{it.L('10 USD x 1 lot x 125,000 USD/100,000 = 12.5 USD')}</strong></p>
                             <p className='text-align-left'>{it.L('If your account currency is EUR or GBP, your commission will be converted based on the current forex rate.')}</p>
 
-                            <h3>{it.L('Standard account')}</h3>
+                            <h3>{it.L('Financial account')}</h3>
                             <Table
                                 data={{
                                     thead: [
@@ -243,7 +271,7 @@ const TypesOfPartnership = () => (
                                 }}
                             />
 
-                            <h3>{it.L('Advanced account')}</h3>
+                            <h3>{it.L('Financial STP account')}</h3>
                             <Table
                                 data={{
                                     thead: [
@@ -264,8 +292,8 @@ const TypesOfPartnership = () => (
                                 }}
                             />
 
-                            <p className='text-align-left'>*{it.L('Represents the amount in base currency per round trade. For example, a round trade of 1 lot of EUR/USD would pay EUR 10 on standard accounts. A round trade of 1 lot of USD/CAD would pay USD 5 on advanced accounts.')}</p>
-                            <p className='text-align-left'>**{it.L('Cryptocurrencies commission per round trade. For example, a round trade of 1 lot of BTC/USD with spot price of USD 10,000 will pay USD 30 on standard accounts.')}</p>
+                            <p className='text-align-left'>*{it.L('Represents the amount in base currency per round trade. For example, a round trade of 1 lot of EUR/USD would pay 10 EUR on financial accounts. A round trade of 1 lot of USD/CAD would pay 5 USD on financial STP accounts.')}</p>
+                            <p className='text-align-left'>**{it.L('Cryptocurrencies commission per round trade. For example, a round trade of 1 lot of BTC/USD with spot price of 10,000 USD will pay 30 USD on financial accounts.')}</p>
                         </div>
 
                         <a href={it.affiliate_signup_url} className='button' target='_blank' rel='noopener noreferrer'>

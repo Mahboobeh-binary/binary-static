@@ -60,6 +60,9 @@
             div.select {
                 width: 280px !important;
             }
+            .error-msg {
+                text-align: center;
+            }
         }
     }
 }
@@ -251,6 +254,11 @@
                     width: calc(50% - 55px);
                 }
             }
+        }
+    }
+    &#error_transfer {
+        #dialog_content {
+            max-width: 26em;
         }
     }
 }

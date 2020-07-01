@@ -125,7 +125,8 @@ const Highchart = (() => {
 
         HighchartUI.updateLabels(chart, getHighchartLabelParams());
 
-        // const display_decimals = (history ? history.prices[0] : candles[0].open).toString().split('.')[1].length || 3;
+        // if we disable a symbol in API, it will be missing from active symbols so we can't retrieve its pip
+        // so we should handle getting an undefined display_decimals
         const display_decimals = await getUnderlyingPipSize(contract.underlying);
         chart_options = {
             data,
@@ -138,8 +139,9 @@ const Highchart = (() => {
             radius    : 2,
             title     : init_options.title,
             tooltip   : {
-                valueDecimals: display_decimals,
-                xDateFormat  : '%A, %b %e, %H:%M:%S GMT',
+                xDateFormat: '%A, %b %e, %H:%M:%S GMT',
+                // if display_decimals is undefined, don't change the tooltips' decimals
+                ...(display_decimals && { valueDecimals: display_decimals }),
             },
             user_sold: contract.status === 'sold',
             x_axis   : { label: { format: '{value:%H:%M:%S}', overflow: 'justify' } },
@@ -150,9 +152,10 @@ const Highchart = (() => {
         HighchartUI.setChartOptions(chart_options);
 
         return getHighstock((Highcharts) => {
-            Highcharts.setOptions(HighchartUI.getHighchartOptions());
             if (!el) chart = null;
             else {
+                Highcharts.setOptions(HighchartUI.getHighchartOptions());
+
                 chart          = Highcharts.StockChart(el, HighchartUI.getChartOptions());
                 is_initialized = true;
 

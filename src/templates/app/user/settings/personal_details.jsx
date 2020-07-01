@@ -9,7 +9,6 @@ import {
     AddressPostcode,
     DateOfBirth,
     FirstName,
-    GeocodeValidation,
     LastName,
     Phone,
     Salutation,
@@ -30,7 +29,7 @@ const PersonalDetails = () => (
         </div>
 
         <div id='msg_main' className='invisible'>
-            <p>{it.L('Thank you for completing your Personal Details. You can now deposit funds and trade Forex with real money on MetaTrader 5.')}</p>
+            <p>{it.L('Thank you for completing your Personal Details. You can now deposit funds and trade forex with real money on MetaTrader 5.')}</p>
             <div className='center-text'>
                 <a className='button' href={it.url_for('user/metatrader')}>
                     <span>{it.L('Go to MetaTrader 5 dashboard')}</span>
@@ -67,9 +66,7 @@ const PersonalDetails = () => (
                 <AddressLine2 />
                 <AddressCity />
                 <AddressState />
-                <AddressPostcode>
-                    <GeocodeValidation className='gr-5 geocode-container' />
-                </AddressPostcode>
+                <AddressPostcode />
             </Fieldset>
 
             <Fieldset id='fieldset_email_consent' legend={it.L('Email preference')}>

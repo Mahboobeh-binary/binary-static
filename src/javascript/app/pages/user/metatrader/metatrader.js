@@ -2,6 +2,7 @@ const MetaTraderConfig   = require('./metatrader.config');
 const MetaTraderUI       = require('./metatrader.ui');
 const Client             = require('../../../base/client');
 const BinarySocket       = require('../../../base/socket');
+const setCurrencies      = require('../../../common/currency').setCurrencies;
 const Validation         = require('../../../common/form_validation');
 const localize           = require('../../../../_common/localize').localize;
 const State              = require('../../../../_common/storage').State;
@@ -35,16 +36,12 @@ const MetaTrader = (() => {
                             MetaTraderUI.displayPageError(error.message);
                         }
                     });
-                    getExchangeRates();
                 }
             } else {
                 MetaTraderUI.displayPageError(localize('Sorry, this feature is not available in your jurisdiction.'));
             }
         });
     };
-
-    // we need to calculate min/max equivalent to 1 and 20000 USD, so get exchange rates for all currencies based on USD
-    const getExchangeRates = () => BinarySocket.send({ exchange_rates: 1, base_currency: 'USD' });
 
     const setMTCompanies = () => {
         const mt_financial_company = State.getResponse('landing_company.mt_financial_company');
@@ -80,7 +77,7 @@ const MetaTrader = (() => {
                     reject(response.error);
                     return;
                 }
-                
+
                 const vanuatu_standard_demo_account = response.mt5_login_list.find(account =>
                     Client.getMT5AccountType(account.group) === 'demo_vanuatu_standard');
 
@@ -227,19 +224,28 @@ const MetaTrader = (() => {
                 }
 
                 const req = makeRequestObject(acc_type, action);
-                BinarySocket.send(req).then((response) => {
+                BinarySocket.send(req).then(async (response) => {
                     if (response.error) {
                         MetaTraderUI.displayFormMessage(response.error.message, action);
                         if (typeof actions_info[action].onError === 'function') {
                             actions_info[action].onError(response, MetaTraderUI.$form());
                         }
                         if (/^MT5(Deposit|Withdrawal)Error$/.test(response.error.code)) {
-                            getExchangeRates();
+                            // update limits if outdated due to exchange rates changing for currency
+                            BinarySocket.send({ website_status: 1 }).then((response_w) => {
+                                if (response_w.website_status) {
+                                    setCurrencies(response_w.website_status);
+                                }
+                            });
                         }
                         MetaTraderUI.enableButton(action, response);
                     } else {
+                        await BinarySocket.send({ get_account_status: 1 });
                         if (accounts_info[acc_type].info) {
                             const parent_action = /password/.test(action) ? 'manage_password' : 'cashier';
+                            if (parent_action === 'cashier') {
+                                await BinarySocket.send({ get_limits: 1 });
+                            }
                             MetaTraderUI.loadAction(parent_action);
                             MetaTraderUI.enableButton(action, response);
                             MetaTraderUI.refreshAction();
